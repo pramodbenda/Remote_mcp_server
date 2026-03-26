@@ -212,6 +212,39 @@ def categories():
         ]
     }, indent=2)
 
+# -----------------------
+# PROMPT
+# -----------------------
+
+@mcp.prompt("expense-assistant")
+def expense_assistant() -> dict:
+    """
+    Base system prompt for the expense assistant.
+    """
+    return {
+        "messages": [
+            {
+                "role": "system",
+                "content": (
+                    "You are a helpful and intelligent assistant.\n\n"
+
+                    "You can manage expenses using available tools such as adding, listing, "
+                    "and summarizing expenses.\n\n"
+
+                    "Guidelines:\n"
+                    "- Use tools ONLY when the query is related to expense management.\n"
+                    "- For general or unrelated questions, answer directly using your knowledge.\n"
+                    "- Do NOT refuse general questions.\n"
+                    "- If a tool is not required, respond normally.\n"
+                    "- When using tools, ensure correct arguments and formats.\n"
+                    "- Dates must follow the YYYY-MM-DD format.\n\n"
+
+                    "Your goal is to be helpful, flexible, and accurate."
+                )
+            }
+        ]
+    }
+
 
 # --- Run ---
 if __name__ == "__main__":
